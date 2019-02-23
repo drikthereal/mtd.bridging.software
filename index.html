@@ -24,7 +24,10 @@
             <dt class="mt-5 mb-3"><h3>What is <mark>MTD</mark>?</h3></dt>
             <dd>
                 <p>MTD stands for <strong>Making Tax Digital</strong>, which is a key part of the UK government’s plans to make it easier for individuals and businesses to get their tax right.</p>
-                <p class="alert alert-info">VAT-registered businesses with a taxable turnover above the VAT threshold (£85,000) are <strong>required to use the Making Tax Digital service to keep records digitally and use software to submit their VAT returns from <u>1 April 2019.</u></strong></p>
+                <div class="alert alert-info">
+                    <h4 id="pageTimer" class="alert-heading text-center p-2">Well done!</h4>
+                    VAT-registered businesses with a taxable turnover above the VAT threshold (£85,000) are <strong>required to use the Making Tax Digital service to keep records digitally and use software to submit their VAT returns from <u>1 April 2019.</u></strong>
+                </div>
             </dd>
 
             <dt class="mt-5 mb-3"><h3>What's a <mark>Bridging Software</mark>?</h3></dt>
@@ -181,6 +184,25 @@
             <small class="text-muted">If you find a mistake or have a suggestion, send a message to <a href="mailto:yes@weknowhowtodoit.com">yes@weknowhowtodoit.com</a>!</small>
         </p>
     </div>
+
+    <script src="countdown.min.js"></script>
+    <script>
+        var end = new Date(2019, 3, 1);
+        var isBefore = function() { return new Date() <= end };
+        if ( isBefore() ) {
+            var timerId =
+                countdown(
+                    end,
+                    function ( ts ) {
+                        if ( !isBefore() ) window.clearInterval( timerId );
+                        else {
+                            document.getElementById('pageTimer').innerHTML = ts.toHTML("strong", "");
+                        }
+                    },
+                    countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS
+                );
+        }
+    </script>
 
 </body>
 </html>
